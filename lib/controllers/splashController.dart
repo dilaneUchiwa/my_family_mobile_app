@@ -19,9 +19,12 @@ class SplashController extends GetxController {
   void routeUser() async {
     final isLoggedIn = GetStorage().read(StorageConstants.loggedIn)??false;
     final seenIntro = GetStorage().read(StorageConstants.seenIntro);
+    // Get.offNamed(
+    //   isLoggedIn? AppRoutes.home :
+    //     seenIntro != null && seenIntro ? AppRoutes.login : AppRoutes.introHome);
+
     Get.offNamed(
-      isLoggedIn? AppRoutes.home :
-        seenIntro != null && seenIntro ? AppRoutes.login : AppRoutes.introHome);
+      isLoggedIn? AppRoutes.home : AppRoutes.login );
   }
 
   @override

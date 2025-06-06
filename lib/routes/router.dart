@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:my_family_mobile_app/routes/appRoutes.dart';
 import 'package:my_family_mobile_app/views/pages/homePage.dart';
+import 'package:my_family_mobile_app/views/pages/loginPage.dart';
+import 'package:my_family_mobile_app/views/pages/registerPage.dart';
 import 'package:my_family_mobile_app/views/pages/splashScreen.dart';
 
 class AppRouter {
@@ -10,6 +12,11 @@ class AppRouter {
       page: () => const HomePage(),
       // binding: HomeBinding(),
     ),
-    GetPage(name: AppRoutes.splash, page: () => SplashScreen())
+    GetPage(name: AppRoutes.splash, page: () => SplashScreen()),
+    GetPage(
+      name: AppRoutes.login,
+      page: () => LoginPage()
+    ),
+    GetPage(name: AppRoutes.register, page: ()=> RegisterPage() )
   ];
 }

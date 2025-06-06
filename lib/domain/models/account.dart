@@ -1,105 +1,87 @@
-
-class User {
-  String? id;
+class BaseNode {
+  int id;
+  String title;
   String firstName;
   String lastName;
-  String phoneNumber;
-  String email;
-  List<String> roles;
-  DateTime? createdAt;
-  DateTime? updatedAt;
+  DateTime birthDate;
+  String gender;
+  String address;
+  String phone;
+  List<String> interests;
+  int userId;
+  bool baseNode;
 
-  User({
-    this.id,
+  BaseNode({
+    required this.id,
+    required this.title,
     required this.firstName,
     required this.lastName,
-    required this.phoneNumber,
-    required this.email,
-    required this.roles,
-    this.createdAt,
-    this.updatedAt,
+    required this.birthDate,
+    required this.gender,
+    required this.address,
+    required this.phone,
+    required this.interests,
+    required this.userId,
+    required this.baseNode,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
+  factory BaseNode.fromJson(Map<String, dynamic> json) {
+    return BaseNode(
       id: json['id'],
-      firstName: json['first_name'],
-      lastName: json['last_name'],
-      phoneNumber: json['phone_number'],
-      email: json['email'],
-      roles: List<String>.from(json['roles']),
-      createdAt: json['created_at'] != null ? DateTime.parse(json['created_at']) : null,
-      updatedAt: json['updated_at'] != null ? DateTime.parse(json['updated_at']) : null,
+      title: json['title'],
+      firstName: json['firstName'],
+      lastName: json['lastName'],
+      birthDate: DateTime.parse(json['birthDate']),
+      gender: json['gender'],
+      address: json['address'],
+      phone: json['phone'],
+      interests: List<String>.from(json['interests']),
+      userId: json['userId'],
+      baseNode: json['baseNode'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'first_name': firstName,
-      'last_name': lastName,
-      'phone_number': phoneNumber,
-      'email': email,
-      'roles': roles,
-      'created_at': createdAt?.toIso8601String(),
-      'updated_at': updatedAt?.toIso8601String(),
+      'title': title,
+      'firstName': firstName,
+      'lastName': lastName,
+      'birthDate': birthDate.toIso8601String(),
+      'gender': gender,
+      'address': address,
+      'phone': phone,
+      'interests': interests,
+      'userId': userId,
+      'baseNode': baseNode,
     };
   }
 }
 
-String userToString(User user) {
-  return '''
-    User {
-        id: ${user.id ?? "N/A"},
-        firstName: ${user.firstName},
-        lastName: ${user.lastName},
-        phoneNumber: ${user.phoneNumber},
-        email: ${user.email},
-        roles: ${user.roles},
-        createdAt: ${user.createdAt ?? "N/A"},
-        updatedAt: ${user.updatedAt ?? "N/A"}
-    }
-  ''';
-}
-
 class Account {
-  String? id;
-  User owner;
-  bool? isActive;
-  bool? confirmed;
-  String userName;
-  String? password;
+  String username;
+  String email;
+  BaseNode baseNode;
 
   Account({
-    this.id,
-    required this.owner,
-    this.isActive,
-    this.confirmed,
-    required this.userName,
+    required this.username,
+    required this.email,
+    required this.baseNode,
   });
-
-  set setPassword(String password){
-    this.password = password;
-  }
 
   factory Account.fromJson(Map<String, dynamic> json) {
     return Account(
-      id: json['id'],
-      owner: User.fromJson(json['owner']),
-      isActive: json['isActive'],
-      confirmed: json['confirmed'],
-      userName: json['userName'],
+      username: json['username'],
+      email: json['email'],
+      baseNode: BaseNode.fromJson(json['baseNode']),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
-      'owner': owner.toJson(),
-      'isActive': isActive,
-      'confirmed': confirmed,
-      'userName': userName,
-      'password': password,
+      'username': username,
+      'email': email,
+      'baseNode': baseNode.toJson(),
     };
   }
 }

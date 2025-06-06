@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:my_family_mobile_app/controllers/loginController.dart';
+import 'package:my_family_mobile_app/routes/appRoutes.dart';
 import 'package:my_family_mobile_app/themes/theme.dart';
 import 'package:my_family_mobile_app/utils/appImages.dart';
 import 'package:my_family_mobile_app/utils/storageConstant.dart';
@@ -21,29 +22,17 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
       key: _scaffoldKey,
       backgroundColor: Theme.of(context).canvasColor,
       appBar: AppBar(
         title: Text(
-          'B.I.A. DigiBank'.tr,
+          'My Family Tree'.tr,
           style: TextStyle(
             color: AppColors.white,
             fontSize: 20,
             fontWeight: FontWeight.w700,
           ),
         ),
-        leading: InkWell(
-            onTap: () {
-              _scaffoldKey.currentState?.openDrawer();
-            },
-            child: Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Image(
-                  image: AssetImage('assets/menu.png'),
-                  color: AppColors.white,
-                ))),
-        // brightness: Get.isDarkMode ? Brightness.dark : Brightness.light,
         elevation: 0.0,
         automaticallyImplyLeading: true,
         systemOverlayStyle: SystemUiOverlayStyle.light,
@@ -51,32 +40,63 @@ class LoginPage extends StatelessWidget {
       body: ListView(
         children: [
           Container(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 20),
             decoration: BoxDecoration(
               color: AppColors.primary,
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'welcome_back'.tr,
-                  style: TextStyle(
-                    color: AppColors.white,
-                    fontSize: 30,
-                    fontWeight: FontWeight.w400,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'welcome'.tr,
+                      style: TextStyle(
+                        color: AppColors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Welcome ${GetStorage().read(StorageConstants.fullName) == null ? "and" : 'Back ${GetStorage().read(StorageConstants.fullName)}'} Log In to continue',
+                      style: TextStyle(
+                        color: AppColors.white,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+                Obx(() => Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'Welcome ${GetStorage().read(StorageConstants.fullName) == null ? "and" : 'Back ${GetStorage().read(StorageConstants.fullName)}'} Log In to continue',
-                  style: TextStyle(
-                    color: AppColors.white,
-                    fontSize: 14,
+                  child: DropdownButton<String>(
+                    value: loginController.currentLocale.value,
+                    underline: Container(),
+                    items: [
+                      DropdownMenuItem(
+                        value: 'en',
+                        child: Text('englais'.tr),
+                      ),
+                      DropdownMenuItem(
+                        value: 'fr',
+                        child: Text('french'.tr),
+                      ),
+                    ],
+                    onChanged: (String? value) {
+                      if (value != null) {
+                        loginController.changeLanguage(value);
+                      }
+                    },
                   ),
-                ),
+                )),
               ],
             ),
           ),
@@ -99,15 +119,6 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   children: [
                       FormInputField(
-                      // prefixIcon: Row(
-                      //   mainAxisSize: MainAxisSize.min,
-                      //   children: [
-                      //     SvgIcon(
-                      //       AppImages.phone,
-                      //       width: 20,
-                      //     ),
-                      //   ],
-                      // ),
                       focusNode: _nodeText1,
                       labelText: 'login.username'.tr,
                       fieldValidator: (value) {
@@ -122,14 +133,11 @@ class LoginPage extends StatelessWidget {
                       textInputAction: TextInputAction.next,
                       controller: loginController.idTextController,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     FormInputField(
-                      // prefixIcon: SvgIcon(
-                      //   AppImages.lock,
-                      //   width: 25,
-                      // ),
+                     
                       labelText: 'register.customer.password'.tr,
                       fieldValidator: (value) {
                         if (value!.isEmpty) {
@@ -230,7 +238,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.toNamed('/register');
+                          Get.toNamed(AppRoutes.register);
                         },
                         child: Text(
                           'register'.tr,

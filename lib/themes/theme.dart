@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   AppColors._();
-  static final primary = Color.fromRGBO(51, 72, 120, 1);
+  static final primary = Color.fromRGBO(59, 221, 132, 1);
   static final accentColor = Color(0xFFE1EAF8);
   static final blueColor = Color(0xFF2280FF);
   static final blue2 = Color(0xFF004751);
   static final darkBlueColor = Color(0xFF0A2F61);
-  static final buttonColor = Color(0xFF425190);
+  static final buttonColor = Color.fromARGB(255, 50, 156, 103);
   static final purple = Color(0xFFCABDFF);
   static final green = Color(0xFF60D39C);
 

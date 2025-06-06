@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'My Family Mobile App',
+      title: 'My Family Tree',
       translations: Messages(),
       initialRoute: AppRoutes.splash,
       getPages: AppRouter.routes,

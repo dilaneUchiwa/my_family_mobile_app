@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:my_family_mobile_app/domain/models/tokens.dart';
-import 'package:my_family_mobile_app/services/AuthManager.dart';
+import 'package:my_family_mobile_app/services/utils/AuthManager.dart';
 
 
 Future<Dio> getDioPrivate() async {
