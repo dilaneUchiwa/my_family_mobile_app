@@ -250,9 +250,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         child: Padding(
                             padding: const EdgeInsets.all(5.5),
                             child: Image(
+                              width: 20,
+                              height: 20,
                               image: AssetImage(
                                   loggedInOptions[index]['image']!.toString()),
-                              color: AppColors.primary,
+                              // color: AppColors.primary,
                             ))),
                     SizedBox(width: 13),
                     Expanded(
