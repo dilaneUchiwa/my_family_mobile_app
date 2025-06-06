@@ -1,3 +1,2 @@
-final Map<String,String> fr = {
-    'login': 'Connexion',
-};
+const Map<String, String> fr = {
+  };

@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:my_family_mobile_app/domain/models/tokens.dart';
+import 'package:my_family_mobile_app/services/AuthManager.dart';
 
 
 Future<Dio> getDioPrivate() async {
@@ -24,12 +26,12 @@ Future<Dio> getDioPrivate() async {
 
       try {
         
-        token = await verifyAndRefreshToken(token!);
-        if(token==null) return ;
+        // token = await verifyAndRefreshToken(token!);
+        // if(token==null) return ;
 
-        error.requestOptions.headers['Authorization'] = 'Bearer ${token?.accessToken}';
+        // error.requestOptions.headers['Authorization'] = 'Bearer ${token?.accessToken}';
         
-        AuthManager.storeTokens(token);
+        // AuthManager.storeTokens(token);
 
         return handler.resolve(await dioPrivate.fetch(error.requestOptions));
 

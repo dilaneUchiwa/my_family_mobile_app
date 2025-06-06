@@ -27,12 +27,12 @@ class _MyAppState extends State<MyApp> {
     return GetMaterialApp(
       title: 'My Family Mobile App',
       translations: Messages(),
-      initialRoute: AppRoutes.home,
+      initialRoute: AppRoutes.splash,
       getPages: AppRouter.routes,
       debugShowCheckedModeBanner: false,
       theme: Themes.lightTheme,
       locale: langCode == null && langCountryCode == null
-              ? Locale('en', 'US')
+              ? const Locale('en', 'US')
               : Locale(langCode, langCountryCode),
     );
   }

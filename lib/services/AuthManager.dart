@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:my_family_mobile_app/domain/models/account.dart';
+import 'package:my_family_mobile_app/domain/models/tokens.dart';
 
 class AuthManager extends ChangeNotifier {
   Tokens? _tokens=Tokens(accessToken: "INIT", refreshToken: "INIT");
@@ -18,12 +21,12 @@ class AuthManager extends ChangeNotifier {
     if (storedTokens != null) {
       _tokens = storedTokens;
       try {
-        final account = await getMe();
-        if (account != null && account.isActive!) {
-          _account = account;
-        } else {
-          logout();
-        }
+        // final account = await getMe();
+        // if (account != null && account.isActive!) {
+        //   _account = account;
+        // } else {
+        //   logout();
+        // }
       } catch (error) {
         logout();
       }
@@ -37,14 +40,14 @@ class AuthManager extends ChangeNotifier {
 
   Future<void> verifyAndRefresh() async {
     
-      final newTokens = await verifyAndRefreshToken(_tokens!);
-      if (newTokens is Tokens) {
-        _tokens = newTokens;
-        notifyListeners();
-        return ;
-      }
+      // final newTokens = await verifyAndRefreshToken(_tokens!);
+      // if (newTokens is Tokens) {
+      //   _tokens = newTokens;
+      //   notifyListeners();
+      //   return ;
+      // }
 
-      logout();
+      // logout();
     
   }
 
@@ -53,13 +56,13 @@ class AuthManager extends ChangeNotifier {
     await storeTokens(tokens);
 
     try {
-      final account = await getMe(); 
-      if(account!=null && account.isActive!){
-        _account = account;
-        notifyListeners();
-        return;
-      }
-      logout();
+      // final account = await getMe(); 
+      // if(account!=null && account.isActive!){
+      //   _account = account;
+      //   notifyListeners();
+      //   return;
+      // }
+      // logout();
     } catch (error) {
       logout();
     }

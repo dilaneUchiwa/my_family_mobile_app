@@ -41,6 +41,8 @@ dependencies:
   flutter_local_notifications: ^19.2.1
   get_storage: ^2.1.1
   oktoast: ^3.4.0
+  flutter_secure_storage: ^9.2.4
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +66,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  assets:
+    - assets/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
