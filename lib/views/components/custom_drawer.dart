@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:my_family_mobile_app/controllers/homeController.dart';
+import 'package:my_family_mobile_app/routes/appRoutes.dart';
 import 'package:my_family_mobile_app/themes/theme.dart';
 import 'package:my_family_mobile_app/utils/appImages.dart';
 
@@ -17,9 +18,14 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
   var loggedInOptions = [
     {
-      "title": "home_more_option.my_wallet".tr,
-      "onClickFun": () => Get.toNamed('/wallet_account'),
-      "image": "assets/drawerLoggedIn/my_wallet.png"
+      "title": "profile".tr,
+      "onClickFun": () => Get.toNamed(AppRoutes.profile),
+      "image": "assets/profile.png"
+    },
+    {
+      "title": "link_family.title".tr,
+      "onClickFun": () => Get.toNamed(AppRoutes.link_to_invite),
+      "image": "assets/link.png"
     },
   ];
 
@@ -33,7 +39,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
     return Drawer(
         child: Column(children: [
       Container(
-          height: 200,
+          height: 250,
           width: double.infinity,
           color: Theme.of(context).primaryColor,
           child: Container(
@@ -74,34 +80,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                                   ),
                                   width: 54,
                                   height: 54,
-                                  child: FutureBuilder(
-                                      future: null,
-                                      builder: (context,
-                                          AsyncSnapshot<Map<String, String>>
-                                              snapshot) {
-                                        if (!snapshot.hasData) {
-                                          return Image.asset(AppImages.avatar);
-                                        }
-                                        return false
-                                            ? Image(
-                                                image: NetworkImage("url",
-                                                    headers: snapshot.data),
-                                                errorBuilder:
-                                                    (context, error, trace) =>
-                                                        Image.asset(
-                                                            AppImages.avatar),
-                                                loadingBuilder: (context, child,
-                                                    loadingProgress) {
-                                                  if (loadingProgress == null) {
-                                                    return child;
-                                                  }
-                                                  return Image.asset(
-                                                      AppImages.avatar);
-                                                },
-                                                fit: BoxFit.cover,
-                                              )
-                                            : Image.asset(AppImages.avatar);
-                                      }),
+                                  child: Image.asset(AppImages.avatar),
                                 )),
                             SizedBox(
                               width: 54,
@@ -131,29 +110,29 @@ class _CustomDrawerState extends State<CustomDrawer> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      "---",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 16,
+                              Obx(() => Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          "${_homeController.account.value.baseNode.firstName} ${_homeController.account.value.baseNode.lastName}",
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 16,
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
                                       ),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                'phone: @username',
-                                style: Themes.smallTextStyle.merge(
-                                    const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w400)),
-                              )
+                                    ],
+                                  )),
+                              Obx(() => Text(
+                                    '@${_homeController.account.value.username}',
+                                    style: Themes.smallTextStyle.merge(
+                                        const TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w400)),
+                                  ))
                             ],
                           ),
                         ),

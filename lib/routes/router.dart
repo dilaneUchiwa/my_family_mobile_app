@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:my_family_mobile_app/routes/appRoutes.dart';
+import 'package:my_family_mobile_app/views/pages/MainPage.dart';
 import 'package:my_family_mobile_app/views/pages/homePage.dart';
 import 'package:my_family_mobile_app/views/pages/linkToFamilyPage.dart';
 import 'package:my_family_mobile_app/views/pages/loginPage.dart';
@@ -10,7 +11,7 @@ class AppRouter {
   static final routes = [
     GetPage(
       name: AppRoutes.home,
-      page: () => const HomePage(),
+      page: () => Mainpage(),
       // binding: HomeBinding(),
     ),
     GetPage(name: AppRoutes.splash, page: () => SplashScreen()),

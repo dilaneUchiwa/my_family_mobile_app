@@ -1,4 +1,5 @@
 const Map<String, String> en = {
+  // Login page
   'My Family Tree': 'My Family Tree',
   'welcome_back': 'Welcome Back',
   'login.username': 'Username',
@@ -44,12 +45,57 @@ const Map<String, String> en = {
   'OTHER': 'Other',
   'registration_failed': 'Registration failed',
   'link_account': 'Link Account',
-  'link_account_title': 'Join Your Family Tree',
-  'link_account_description': 'If you have received an invitation code from a family member, enter it below to join their family tree. This will allow you to view and contribute to your shared family history.',
+  'link_account_title': 'Link to Family',
+  'link_account_description': 'Enter the 6-digit invitation code sent to you',
   'link_account_button': 'Link Account',
-  'skip_linking': 'Continue without linking',
+  'skip_linking': 'Skip for now',
   'invalid_invitation_code': 'Invalid invitation code',
   'account_linked_successfully': 'Account linked successfully',
   'login_failed': 'Login failed. Please check your credentials.',
-  'logged_in_successfully': 'Logged in successfully',
+  'logged_in_successfully': 'Successfully logged in',
+
+  // Home page
+  'home': 'Home',
+  'space': 'Space',
+  'logout': 'Logout',
+  'input.home.back.text': 'Press back again to exit',
+  'logout_session_expired': 'Your session has expired',
+
+  'home_more_option.my_wallet': 'My Wallet',
+  'input.home.screen.last_login': 'Last login',
+
+  'no_internet.title': 'No Internet Connection',
+  'no_internet.desc': 'Please check your internet connection and try again',
+  'no_internet.button.check': 'Check Connection',
+
+  'bottom_nav.home': 'Home',
+  'bottom_nav.space': 'Space',
+
+  'drawer.profile.lastLogin': 'Last login',
+  'drawer.logout': 'Logout',
+  'drawer.my_wallet': 'My Wallet',
+  'drawer.username_placeholder': 'Username not set',
+  'drawer.phone_placeholder': 'Phone not set',
+
+  'link_family.title': 'Link to Family Tree',
+  'link_family.subtitle': 'Join Your Family Tree',
+  'link_family.description': 'Enter the invitation code you received from your family member to join their tree',
+  'link_family.code_hint': 'Enter 6-digit code',
+  'link_family.link_button': 'Link Account',
+  'link_family.skip': 'Skip for now',
+
+  'register.interests.family_history': 'Family History',
+  'register.interests.genealogy': 'Genealogy',
+  'register.interests.photography': 'Photography',
+  'register.interests.story_telling': 'Story Telling',
+  'register.interests.research': 'Research',
+  'register.interests.history': 'History',
+  'register.title.mr': 'Mr',
+  'register.title.mrs': 'Mrs',
+  'register.title.ms': 'Ms',
+  'register.title.dr': 'Dr',
+
+  'message.confirm_exit': 'Press back again to exit',
+  'message.session_expired': 'Your session has expired',
+  'message.loading': 'Loading...',
 };

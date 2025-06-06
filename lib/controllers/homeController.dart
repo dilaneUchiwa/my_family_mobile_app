@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -16,8 +16,10 @@ class Homecontroller extends GetxController {
   var previousConnection = false.obs;
   var currentBackPressTime = Rxn<DateTime>();
   var selectedNavIndex = 0.obs;
+  var isOnline = true.obs;
   bool isChanged = false;
   final connectivity = Connectivity();
+  late Timer _connectivityTimer;
 
   var account = Account(
     username: '',
@@ -37,71 +39,71 @@ class Homecontroller extends GetxController {
     ),
   ).obs;
 
+  @override
+  void onInit() {
+    super.onInit();
+    _initConnectivityChecks();
+    _checkInitialConnectivity();
+  }
+
+  void _initConnectivityChecks() {
+    _connectivityTimer = Timer.periodic(
+      const Duration(seconds: 30),
+      (_) => _checkConnectivityAndPing()
+    );
+  }
+
+  Future<void> _checkConnectivityAndPing() async {
+    final connectivityResult = await connectivity.checkConnectivity();
+    final hasNetworkConnection = connectivityResult != ConnectivityResult.none;
+    hasConnection.value = hasNetworkConnection;
+    isOnline.value = hasNetworkConnection ? await _pingGoogle() : false;
+  }
+
+  Future<bool> _pingGoogle() async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  void _handleConnectivityChange(ConnectivityResult result) {
+    previousConnection(hasConnection.value);
+    _checkConnectivityAndPing();
+    if (!previousConnection.value && hasConnection.value) {
+      selectedNavIndex.value = 0;
+      _refreshHomePage();
+    }
+  }
+
+  Future<void> _checkInitialConnectivity() async {
+    await _checkConnectivityAndPing();
+  }
+
   void logoutUser(String logoutMessage) {
-    var isLoggedIn = GetStorage().read(StorageConstants.loggedIn);
-    isLoggedIn = isLoggedIn ?? false;
+    final isLoggedIn = GetStorage().read(StorageConstants.loggedIn) ?? false;
     if (isLoggedIn) {
-      DateTime now = DateTime.now();
-      String formattedDate = DateFormat('dd/MM/yyyy HH:mm').format(now);
+      final formattedDate = DateFormat('dd/MM/yyyy HH:mm').format(DateTime.now());
       GetStorage().write(StorageConstants.lastLoginTime, formattedDate);
       GetStorage().remove(StorageConstants.loggedIn);
       Get.find<AuthManager>().logout();
-      ToastController(
-              title: 'Info', message: logoutMessage, type: ToastType.info)
-          .showToast();
+      ToastController(title: 'Info', message: logoutMessage, type: ToastType.info).showToast();
       Get.offAllNamed(AppRoutes.login);
     }
   }
 
-  @override
-  void onInit() async {
-    super.onInit();
-    initData();
+  Future<void> _refreshHomePage() async {
+    final isLoggedIn = GetStorage().read(StorageConstants.loggedIn) ?? false;
+    if (!isLoggedIn) logoutUser('logout_session_expired'.tr);
   }
 
   Future<void> onRefresh() async {
     await resetState();
-    initData();
+    await _checkInitialConnectivity();
   }
 
-  void initData() async {
-    var connectivityResult = await connectivity.checkConnectivity();
-    if (connectivityResult == ConnectivityResult.mobile) {
-      hasConnection(true);
-    } else if (connectivityResult == ConnectivityResult.wifi) {
-      hasConnection(true);
-    } else {
-      hasConnection(false);
-    }
-    // fetchuserProfile();
-  }
-
-  void _connectionChange(ConnectivityResult result) {
-    previousConnection(hasConnection.value);
-    if (result == ConnectivityResult.mobile) {
-      hasConnection(true);
-    } else if (result == ConnectivityResult.wifi) {
-      hasConnection(true);
-    } else {
-      hasConnection(false);
-    }
-
-    if (!previousConnection.value) {
-      selectedNavIndex.value = 0;
-      refreshHomePage();
-    }
-  }
-
-  Future<Null> refreshHomePage() async {
-    var isLoggedIn = GetStorage().read(StorageConstants.loggedIn);
-    isLoggedIn = isLoggedIn != null ? isLoggedIn : false;
-    if (isLoggedIn) {
-      // onRefreshBalance();
-    } else {
-      logoutUser('logout_session_expired'.tr);
-    }
-  }
-  
   @override
   Future<void> resetState() async {
     selectedNavIndex.value = 0;
@@ -109,5 +111,12 @@ class Homecontroller extends GetxController {
     hasConnection.value = true;
     previousConnection.value = false;
     currentBackPressTime.value = null;
+    isOnline.value = true;
+  }
+
+  @override
+  void onClose() {
+    _connectivityTimer.cancel();
+    super.onClose();
   }
 }

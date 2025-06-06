@@ -52,4 +52,52 @@ const Map<String, String> fr = {
   'account_linked_successfully': 'Compte lié avec succès',
   'login_failed': 'Échec de la connexion. Veuillez vérifier vos identifiants.',
   'logged_in_successfully': 'Connexion réussie',
+
+  'login.password': 'Mot de passe',
+  'login.sign_in': 'Se connecter',
+  'login.failed': 'Échec de la connexion',
+
+  'home': 'Accueil',
+  'space': 'Espace',
+  'logout': 'Déconnexion',
+  'input.home.back.text': 'Appuyez à nouveau pour quitter',
+  'logout_session_expired': 'Votre session a expiré',
+  
+  'home_more_option.my_wallet': 'Mon portefeuille',
+  'input.home.screen.last_login': 'Dernière connexion',
+
+  'no_internet.title': 'Pas de connexion Internet',
+  'no_internet.desc': 'Veuillez vérifier votre connexion internet et réessayer',
+  'no_internet.button.check': 'Vérifier la connexion',
+
+  'bottom_nav.home': 'Accueil',
+  'bottom_nav.space': 'Espace',
+
+  'drawer.profile.lastLogin': 'Dernière connexion',
+  'drawer.logout': 'Déconnexion',
+  'drawer.my_wallet': 'Mon portefeuille',
+  'drawer.username_placeholder': 'Nom d\'utilisateur non défini',
+  'drawer.phone_placeholder': 'Téléphone non défini',
+
+  'link_family.title': 'Lier à l\'arbre généalogique',
+  'link_family.subtitle': 'Rejoindre votre arbre généalogique',
+  'link_family.description': 'Entrez le code d\'invitation reçu de votre membre de famille pour rejoindre leur arbre',
+  'link_family.code_hint': 'Entrez le code à 6 chiffres',
+  'link_family.link_button': 'Lier le compte',
+  'link_family.skip': 'Passer pour le moment',
+
+  'register.interests.family_history': 'Histoire familiale',
+  'register.interests.genealogy': 'Généalogie',
+  'register.interests.photography': 'Photographie',
+  'register.interests.story_telling': 'Récits',
+  'register.interests.research': 'Recherche',
+  'register.interests.history': 'Histoire',
+  'register.title.mr': 'M.',
+  'register.title.mrs': 'Mme',
+  'register.title.ms': 'Mlle',
+  'register.title.dr': 'Dr',
+
+  'message.confirm_exit': 'Appuyez à nouveau pour quitter',
+  'message.session_expired': 'Votre session a expiré',
+  'message.loading': 'Chargement...',
 };

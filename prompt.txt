@@ -1,2 +1,2 @@
-parcours loginPage et rajoute tout les textes qui doivent etre traduits dans les fichiers de traductions anglais et francais.
+parcours toute les pages et rajoute tout les textes qui doivent etre traduits dans les fichiers de traductions anglais et francais.
 ex : pour login.username , on mettra les traductions dans en.dart et fr.dart

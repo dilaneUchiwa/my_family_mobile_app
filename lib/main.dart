@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:my_family_mobile_app/controllers/homeController.dart';
 import 'package:my_family_mobile_app/utils/message.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:my_family_mobile_app/routes/router.dart';
@@ -18,6 +19,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put<AuthManager>(AuthManager(), permanent: true);
+    Get.put<Homecontroller>(Homecontroller(), permanent: true);
+    
     return OKToast(
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

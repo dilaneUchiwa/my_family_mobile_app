@@ -31,9 +31,8 @@ class Mainpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => homeController.hasConnection.value
+    return Obx(() => homeController.isOnline.value
         ? Scaffold(
-            drawer: const CustomDrawer(),
             resizeToAvoidBottomInset: false,
             backgroundColor: Colors.transparent,
             body: PopScope(
