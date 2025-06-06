@@ -11,4 +11,7 @@ class StorageConstants {
   static final String email = "email";
   static final String fullName = "full_name";
   static const String rememberMe = "remember_me";
+  static const String userName = "username";
+  static const String password = "password";
+  static const String lastLoginTime = "lastLoginTime";
 }

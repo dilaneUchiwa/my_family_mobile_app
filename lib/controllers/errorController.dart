@@ -7,31 +7,31 @@ import 'package:get_storage/get_storage.dart';
 import 'package:my_family_mobile_app/utils/storageConstant.dart';
 
 class ErrorController {
-  ToastController toastController = ToastController(title: '');
-  handleError(errorResponseString) {
+
+  static handleError(errorResponseString) {
     print(errorResponseString);
     try {
       var errorObj = json.decode(errorResponseString.toString());
-      var statusCode = errorObj['statusCode'];
-      var message = errorObj['message'];
-      if (statusCode == 403) {
-        // logoutUser();
+      var statusCode = errorObj['status'] ?? errorObj['statusCode'];
+      var message = errorObj['details']  ?? errorObj['message'] ?? errorObj['error'];
+      if (statusCode == 403 || statusCode == 401) {
         showMessage(message);
+        logoutUser();
       } else {
         showMessage(message);
       }
+
     } catch (error) {
+
       showMessage('error_message_server'.tr);
     }
   }
 
-  void showMessage(message) {
-    toastController =
-        new ToastController(title: 'Error', message: message.toString().tr);
-    toastController.showToast();
+  static void showMessage(message) {
+    ToastController(title: 'error'.tr, message: message.toString().tr,type: ToastType.error).showToast();
   }
 
-  void logoutUser() async {
+  static void logoutUser() async {
     var isLoggedIn = GetStorage().read(StorageConstants.loggedIn);
     isLoggedIn = isLoggedIn != null ? isLoggedIn : false;
     if (isLoggedIn) {

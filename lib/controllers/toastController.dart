@@ -1,41 +1,63 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:my_family_mobile_app/themes/theme.dart';
+
+enum ToastType { success, error, info, warning }
 
 class ToastController extends GetxController {
   String? title;
   String? message;
+  ToastType type;
 
-  ToastController({this.title, this.message});
+  ToastController({
+    this.title, 
+    this.message, 
+    this.type = ToastType.success
+  });
+
+  Color _getToastColor() {
+    switch (type) {
+      case ToastType.success:
+        return Colors.green;
+      case ToastType.error:
+        return Colors.red;
+      case ToastType.info:
+        return AppColors.primary;
+      case ToastType.warning:
+        return Colors.orange;
+      default:
+        return AppColors.primary;
+    }
+  }
 
   void showToast() {
     showToastWidget(
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
-          child: Container(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
-            // width: Get.width * 0.9,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              color: Get.isDarkMode ? Colors.grey[200] : Colors.grey[900],
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        decoration: BoxDecoration(
+          color: Get.isDarkMode ? Colors.grey[800] : _getToastColor(),
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              offset: const Offset(0, 2),
+              blurRadius: 4,
             ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Flexible(
-                  child: Text(
-                    message ?? '',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Get.isDarkMode ? Colors.black : Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+          ],
+        ),
+        child: Text(
+          message ?? '',
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 16,
           ),
         ),
-        dismissOtherToast: true);
+      ),
+      duration: const Duration(seconds: 3),
+      position: ToastPosition.top,
+      dismissOtherToast: true,
+    );
   }
 }

@@ -30,7 +30,7 @@ class AuthManager extends GetxController {
   }
 
   Future<void> verifyAndRefresh() async {
-    final newTokens = await verifyAndRefreshToken(_tokens.value!);
+    final newTokens = await AuthService.verifyAndRefreshToken(_tokens.value!);
     if (newTokens is Tokens) {
       _tokens.value = newTokens;
       return;

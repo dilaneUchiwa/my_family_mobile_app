@@ -20,6 +20,7 @@ class LoginController extends GetxController {
   final flutterSecureStorage = const FlutterSecureStorage();
   var lastLoggedInUser = "".obs;
   var currentLocale = 'en'.obs;
+  var isLoginLoading = false.obs;
 
   @override
   void onInit() {
@@ -46,47 +47,53 @@ class LoginController extends GetxController {
   }
 
   void authenticate({bool biometricLogin = false}) async {
-    Get.dialog(
-        Center(
-            child: CircularProgressIndicator(
-                color: Get.theme.colorScheme.primary)),
-        barrierDismissible: false);
+    if (isLoginLoading.value) return;
+    
+    isLoginLoading.value = true;
     try {
-     
       var requestObject = {
         'username': idTextController.text.trim(),
         'password': passwordTextController.text.trim()
       };
       
-      final account = await login(requestObject);
+      final account = await AuthService.login(requestObject);
 
-      if(account==null){
-        Get.back(); 
-      }else{
+      if(account == null) {
+        ToastController(
+          title: 'Error',
+          message: 'login_failed'.tr,
+          type: ToastType.error
+        ).showToast();
+      } else {
         Get.put(Homecontroller()).account.value = account;
-          await GetStorage().write(StorageConstants.loggedIn, true);
+        await GetStorage().write(StorageConstants.loggedIn, true);
 
-        passwordTextController.clear();
-        idTextController.clear();
         if (rememberMe.value) {
           await flutterSecureStorage.write(
-              key: StorageConstants.userName, value: idTextController.text.trim());
+              key: StorageConstants.userName, 
+              value: idTextController.text.trim());
           await flutterSecureStorage.write(
-              key: StorageConstants.password, value: passwordTextController.text.trim());
+              key: StorageConstants.password, 
+              value: passwordTextController.text.trim());
         } else {
           await flutterSecureStorage.delete(key: StorageConstants.userName);
           await flutterSecureStorage.delete(key: StorageConstants.password);
         }
 
-        Get.offAndToNamed(AppRoutes.home);
-        toastController =
-            ToastController(title: 'Success', message: 'logged in');
-        toastController.showToast();
-      }
+        passwordTextController.clear();
+        idTextController.clear();
 
+        Get.offAllNamed(AppRoutes.home);
+        ToastController(
+          title: 'Success',
+          message: 'logged_in_successfully'.tr,
+          type: ToastType.success
+        ).showToast();
+      }
     } catch (error) {
       ErrorController.handleError(error);
-      Get.back();
+    } finally {
+      isLoginLoading.value = false;
     }
   }
 

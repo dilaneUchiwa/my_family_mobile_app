@@ -8,4 +8,6 @@ class AppRoutes {
   static const String register = '/register';
   static const String splash = '/splash';
   static const String introHome = '/intro-home';
+  static const String link_to_invite = '/link-to-invite';
+  static const String invite = '/invite';
 }
