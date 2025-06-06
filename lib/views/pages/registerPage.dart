@@ -34,16 +34,13 @@ class RegisterPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      DropdownButtonFormField<String>(
-                        decoration:
-                            InputDecoration(labelText: 'register.title'.tr),
-                        value: registerController.titles.first,
-                        items: registerController.titles.map((String title) {
-                          return DropdownMenuItem(
-                              value: title, child: Text(title));
-                        }).toList(),
-                        onChanged: (value) => registerController
-                            .titleTextController.text = value!,
+                      FormInputField(
+                        labelText: 'register.title'.tr,
+                        fieldValidator: (value) => value!.isEmpty
+                            ? 'input.error_enter_title'.tr
+                            : null,
+                        controller: registerController.titleTextController,
+                        textInputAction: TextInputAction.next,
                       ),
                       SizedBox(height: 20),
                       FormInputField(
@@ -174,10 +171,7 @@ class RegisterPage extends StatelessWidget {
                       FormInputField(
                         labelText: 'register.confirm_password'.tr,
                         onChanged: (value) {
-                          // if (value !=
-                          //     registerController.passwordTextController.text) {
-                            _formKey.currentState!.validate();
-                          // }
+                          _formKey.currentState!.validate();
                         },
                         fieldValidator: (value) {
                           if (value!.isEmpty) {

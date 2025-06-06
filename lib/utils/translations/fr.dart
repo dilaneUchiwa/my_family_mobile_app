@@ -39,6 +39,7 @@ const Map<String, String> fr = {
   'register.interests': 'Centres d\'intérêt',
   'input.error_enter_firstname': 'Veuillez entrer votre prénom',
   'input.error_enter_lastname': 'Veuillez entrer votre nom',
+  'input.error_enter_title': 'Veuillez entrer votre titre',
   'MALE': 'Homme',
   'FEMALE': 'Femme',
   'OTHER': 'Autre',
@@ -100,4 +101,45 @@ const Map<String, String> fr = {
   'message.confirm_exit': 'Appuyez à nouveau pour quitter',
   'message.session_expired': 'Votre session a expiré',
   'message.loading': 'Chargement...',
+  'type_message': 'Écrivez un message...',
+  'no_messages': 'Pas encore de messages',
+  'message_sent': 'Message envoyé',
+
+  // Space-related translations
+  'space_not_found': 'Espace non trouvé',
+  'no_spaces': 'Aucun espace disponible',
+  'create_space': 'Créer un espace',
+  'space_members': 'Membres',
+  'space_settings': 'Paramètres',
+  'space_media': 'Médias',
+  'create_discussion': 'Créer une discussion',
+  'p2p_discussion': 'Message privé',
+  'group_discussion': 'Discussion de groupe',
+  'no_events_yet': 'Aucun événement prévu',
+  'select_members': 'Sélectionner des membres',
+  'attach_file': 'Joindre un fichier',
+  'discussions': 'Discussions',
+  'space_details': 'Détails de l\'espace',
+
+  // Media related
+  'upload_media': 'Télécharger un média',
+  'select_files': 'Sélectionner des fichiers',
+  'media_gallery': 'Galerie média',
+  
+  // Event related
+  'create_event': 'Créer un événement',
+  'event_details': 'Détails de l\'événement',
+  'event_title': 'Titre',
+  'event_description': 'Description',
+  'event_start_date': 'Date de début',
+  'event_end_date': 'Date de fin',
+  'event_participants': 'Participants',
+  'select_date': 'Sélectionner une date',
+  
+  // Discussion related
+  'create_p2p': 'Créer une discussion privée',
+  'create_group': 'Créer une discussion de groupe',
+  'participants': 'Participants',
+  'add_participants': 'Ajouter des participants',
+  'done': 'Terminer',
 };

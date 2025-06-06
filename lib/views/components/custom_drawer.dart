@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:my_family_mobile_app/controllers/homeController.dart';
+import 'package:my_family_mobile_app/controllers/registerController.dart';
 import 'package:my_family_mobile_app/routes/appRoutes.dart';
 import 'package:my_family_mobile_app/themes/theme.dart';
 import 'package:my_family_mobile_app/utils/appImages.dart';
@@ -19,13 +20,33 @@ class _CustomDrawerState extends State<CustomDrawer> {
   var loggedInOptions = [
     {
       "title": "profile".tr,
-      "onClickFun": () => Get.toNamed(AppRoutes.profile),
+      "onClickFun": () => null, // Get.toNamed(AppRoutes.profile),
       "image": "assets/profile.png"
     },
     {
       "title": "link_family.title".tr,
-      "onClickFun": () => Get.toNamed(AppRoutes.link_to_invite),
+      "onClickFun": () {
+        if (!Get.isRegistered<RegisterController>()) {
+          Get.put(RegisterController());
+        }
+        Get.toNamed(AppRoutes.link_to_invite);
+      },
       "image": "assets/link.png"
+    },
+    {
+      "title": "space".tr,
+      "onClickFun": () => Get.toNamed(AppRoutes.space),
+      "image": "assets/link.png"
+    },
+    {
+      "title": "discussions".tr,
+      "onClickFun": () => Get.toNamed(AppRoutes.spaceDiscussions),
+     "image": "assets/link.png"
+    },
+    {
+      "title": "events".tr,
+      "onClickFun": () => Get.toNamed(AppRoutes.spaceEvents),
+     "image": "assets/link.png"
     },
   ];
 

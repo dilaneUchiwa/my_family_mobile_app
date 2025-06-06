@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_family_mobile_app/controllers/homeController.dart';
+import 'package:my_family_mobile_app/controllers/space/discussionController.dart';
+import 'package:my_family_mobile_app/controllers/space/eventController.dart';
+import 'package:my_family_mobile_app/controllers/space/mediaController.dart';
+import 'package:my_family_mobile_app/controllers/space/messageController.dart';
+import 'package:my_family_mobile_app/controllers/space/spaceController.dart';
 import 'package:my_family_mobile_app/controllers/toastController.dart';
 import 'package:my_family_mobile_app/views/components/bottom_navigation_bar.dart';
 import 'package:my_family_mobile_app/views/components/custom_drawer.dart';
@@ -31,6 +36,13 @@ class Mainpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put<EventController>(EventController(),permanent: true);
+    Get.put<SpaceController>(SpaceController(),permanent: true);
+    Get.put<DiscussionController>(DiscussionController(),permanent: true);
+    Get.put<MediaController>(MediaController(),permanent: true);
+    Get.put<MessageController>(MessageController(),permanent: true);
+    
+    
     return Obx(() => homeController.isOnline.value
         ? Scaffold(
             resizeToAvoidBottomInset: false,

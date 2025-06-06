@@ -4,6 +4,7 @@ import 'package:my_family_mobile_app/controllers/homeController.dart';
 import 'package:my_family_mobile_app/themes/theme.dart';
 import 'package:my_family_mobile_app/utils/appImages.dart';
 import 'package:my_family_mobile_app/views/components/svg_icon.dart';
+import 'package:my_family_mobile_app/routes/appRoutes.dart';
 
 class BottomNavigationBarComponent extends StatelessWidget {
   BottomNavigationBarComponent({super.key});
@@ -24,18 +25,24 @@ class BottomNavigationBarComponent extends StatelessWidget {
                 children: [
                   _BottomItem(
                     icon: AppImages.home,
-                    title: 'home'.tr,
+                    title: 'bottom_nav.home'.tr,
                     currentIndex: homeController.selectedNavIndex.value,
                     index: 0,
-                    onTap: homeController.selectedNavIndex,
+                    onTap: (index) {
+                      homeController.selectedNavIndex.value = index;
+                      Get.toNamed(AppRoutes.home);
+                    },
                     size: 30,
                   ),
                   _BottomItem(
                     icon: AppImages.home,
-                    title: 'space'.tr,
+                    title: 'bottom_nav.space'.tr,
                     currentIndex: homeController.selectedNavIndex.value,
                     index: 1,
-                    onTap: homeController.selectedNavIndex,
+                    onTap: (index) {
+                      homeController.selectedNavIndex.value = index;
+                      Get.toNamed(AppRoutes.space);
+                    },
                   ),
                 ],
               ),

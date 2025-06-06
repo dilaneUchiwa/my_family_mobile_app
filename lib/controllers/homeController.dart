@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:my_family_mobile_app/controllers/toastController.dart';
 import 'package:my_family_mobile_app/domain/models/account.dart';
+import 'package:my_family_mobile_app/domain/models/mock.dart';
 import 'package:my_family_mobile_app/domain/models/node.dart';
 import 'package:my_family_mobile_app/routes/appRoutes.dart';
 import 'package:my_family_mobile_app/services/utils/AuthManager.dart';
@@ -38,6 +39,8 @@ class Homecontroller extends GetxController {
       baseNode: false,
     ),
   ).obs;
+  
+  var relations = familyTreeRelations.obs;
 
   @override
   void onInit() {

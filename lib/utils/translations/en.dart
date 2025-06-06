@@ -98,4 +98,47 @@ const Map<String, String> en = {
   'message.confirm_exit': 'Press back again to exit',
   'message.session_expired': 'Your session has expired',
   'message.loading': 'Loading...',
+  'type_message': 'Type a message...',
+  'no_messages': 'No messages yet',
+  'message_sent': 'Message sent',
+
+  // Space-related translations
+  'space_not_found': 'Space not found',
+  'no_spaces': 'No spaces available',
+  'create_space': 'Create Space',
+  'space_members': 'Members',
+  'space_settings': 'Settings',
+  'space_media': 'Media',
+  'create_discussion': 'Create Discussion',
+  'p2p_discussion': 'Private Message',
+  'group_discussion': 'Group Chat',
+  'no_events_yet': 'No events scheduled',
+  'select_members': 'Select Members',
+  'attach_file': 'Attach File',
+  'discussions': 'Discussions',
+  'space_details': 'Space Details',
+
+  // Media related
+  'upload_media': 'Upload Media',
+  'select_files': 'Select Files',
+  'media_gallery': 'Media Gallery',
+  
+  // Event related
+  'create_event': 'Create Event',
+  'event_details': 'Event Details',
+  'event_title': 'Title',
+  'event_description': 'Description',
+  'event_start_date': 'Start Date',
+  'event_end_date': 'End Date',
+  'event_participants': 'Participants',
+  'select_date': 'Select Date',
+  
+  // Discussion related
+  'create_p2p': 'Create Private Discussion',
+  'create_group': 'Create Group Discussion',
+  'participants': 'Participants',
+  'add_participants': 'Add Participants',
+  'done': 'Done',
+
+  'input.error_enter_title': 'Please enter your title'
 };
