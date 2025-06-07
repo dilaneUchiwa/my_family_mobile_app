@@ -5,20 +5,21 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:my_family_mobile_app/controllers/errorController.dart';
 import 'package:my_family_mobile_app/domain/models/account.dart';
+import 'package:my_family_mobile_app/domain/models/space/space_node.dart';
 import 'package:my_family_mobile_app/domain/models/tokens.dart';
 import 'package:my_family_mobile_app/helpers/urls.dart';
 import 'package:my_family_mobile_app/services/nodeService.dart';
+import 'package:my_family_mobile_app/services/spaceService.dart';
 import 'package:my_family_mobile_app/services/utils/AuthManager.dart';
 import 'package:my_family_mobile_app/services/utils/dioPrivate.dart';
 
 class AuthService {
-  
   static Future<Account?> login(dynamic authObject) async {
     try {
       final Dio dio = await getDioPrivate();
       final response = await dio.post(
         URL.loginUrl,
-        data: authObject,  // Envoi direct de l'objet sans jsonEncode
+        data: authObject, // Envoi direct de l'objet sans jsonEncode
       );
 
       if (response.statusCode == 200) {
@@ -42,7 +43,7 @@ class AuthService {
       final Dio dio = await getDioPrivate();
       final response = await dio.post(
         URL.registerUrl,
-        data: registerObject,  // Envoi direct de l'objet sans jsonEncode
+        data: registerObject, // Envoi direct de l'objet sans jsonEncode
       );
 
       if (response.statusCode == 200) {
@@ -52,10 +53,16 @@ class AuthService {
         await Get.find<AuthManager>().login(tokens);
         registerObject['baseNode'] = true;
         final node = await NodeService.createNode(registerObject);
-        if(node ==null ) {
+        if (node == null) {
           return false;
-        }else{
-          return true;
+        } else {
+          final spaceNode = await SpaceService.createSpaceNode(SpaceNode(
+              id: 0, userId: node.userId.toString(), pseudo: registerObject['username']));
+          if (spaceNode == null) {
+            return false;
+          } else {
+            return true;
+          }
         }
       } else {
         ErrorController.handleError(response);
