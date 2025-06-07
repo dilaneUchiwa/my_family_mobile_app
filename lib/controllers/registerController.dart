@@ -77,6 +77,8 @@ class RegisterController extends GetxController {
 
     isLoading.value = true;
 
+    Get.offAllNamed(AppRoutes.link_to_invite);
+
     final isRegister = await AuthService.register(userData);
 
     if(isRegister){

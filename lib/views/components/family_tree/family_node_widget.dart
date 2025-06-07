@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:my_family_mobile_app/controllers/errorController.dart';
 import 'package:my_family_mobile_app/controllers/homeController.dart';
 import 'package:my_family_mobile_app/controllers/toastController.dart';
 import 'package:my_family_mobile_app/domain/models/node_relation.dart';
@@ -286,7 +288,7 @@ class _AddRelationDialogState extends State<AddRelationDialog> {
     );
   }
 
-  void _createRelation() async {
+  Future<void> _createRelation() async {
     if (!_formKey.currentState!.validate()) return;
 
     final nodeData = {
@@ -307,6 +309,7 @@ class _AddRelationDialogState extends State<AddRelationDialog> {
       final newNode = await NodeService.createNode(nodeData);
       if (newNode != null) {
         Get.find<Homecontroller>().buildFamilyGraph();
+        await _showInvitationCodeDialog(newNode.id);
         Navigator.pop(context);
         ToastController(
           title: 'success'.tr,
@@ -320,6 +323,64 @@ class _AddRelationDialogState extends State<AddRelationDialog> {
         message: 'error_creating_relation'.tr,
         type: ToastType.error
       ).showToast();
+    }
+  }
+
+  Future<void> _showInvitationCodeDialog(int nodeId) async {
+    try {
+      final invitationCode = await NodeService.generateInvitationCode(nodeId);
+      if (invitationCode != null) {
+        await Get.dialog(
+          AlertDialog(
+            title: Text('invitation_code_title'.tr),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('invitation_code_description'.tr),
+                SizedBox(height: 16),
+                Container(
+                  padding: EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        invitationCode,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () async {
+                          await Clipboard.setData(ClipboardData(text: invitationCode));
+                          ToastController(
+                            title: 'success'.tr,
+                            message: 'code_copied'.tr,
+                            type: ToastType.success
+                          ).showToast();
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Get.back(),
+                child: Text('close'.tr),
+              ),
+            ],
+          ),
+        );
+      }
+    } catch (e) {
+      ErrorController.handleError(e);
     }
   }
 

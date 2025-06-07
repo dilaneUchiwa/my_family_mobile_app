@@ -18,7 +18,7 @@ class RegisterPage extends StatelessWidget {
       key: _scaffoldKey,
       backgroundColor: Theme.of(context).canvasColor,
       appBar: AppBar(
-        title: Text('registration'.tr),
+        title: Text('register.title'.tr),
         backgroundColor: AppColors.primary,
       ),
       body: Builder(builder: (context) {
@@ -34,19 +34,22 @@ class RegisterPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text('register.personal_info'.tr,
+                          style: Theme.of(context).textTheme.titleLarge),
+                      SizedBox(height: 20),
                       FormInputField(
-                        labelText: 'register.title'.tr,
+                        labelText: 'field.title'.tr,
                         fieldValidator: (value) => value!.isEmpty
-                            ? 'input.error_enter_title'.tr
+                            ? 'validation.required'.tr
                             : null,
                         controller: registerController.titleTextController,
                         textInputAction: TextInputAction.next,
                       ),
                       SizedBox(height: 20),
                       FormInputField(
-                        labelText: 'register.firstName'.tr,
+                        labelText: 'field.first_name'.tr,
                         fieldValidator: (value) => value!.isEmpty
-                            ? 'input.error_enter_firstname'.tr
+                            ? 'validation.required'.tr
                             : null,
                         controller: registerController.firstNameTextController,
                         textInputAction: TextInputAction.next,
@@ -136,14 +139,17 @@ class RegisterPage extends StatelessWidget {
                         textInputAction: TextInputAction.next,
                       ),
                       SizedBox(height: 20),
-                      Text('register.interests'.tr,
+                      Text('field.interests'.tr,
                           style: Theme.of(context).textTheme.titleMedium),
+                      SizedBox(height: 10),
+                      Text('register.interests_hint'.tr,
+                          style: Theme.of(context).textTheme.bodySmall),
                       Obx(() => Wrap(
                             spacing: 8,
                             children: registerController.availableInterests
                                 .map((interest) {
                               return FilterChip(
-                                label: Text(interest),
+                                label: Text(interest.tr),
                                 selected: registerController.selectedInterests
                                     .contains(interest),
                                 onSelected: (_) =>
@@ -207,7 +213,7 @@ class RegisterPage extends StatelessWidget {
               () => registerController.isLoading.value
                   ? Container(
                       color: Colors.black.withOpacity(0.5),
-                      child: const Center(
+                      child: Center(
                         child: CircularProgressIndicator(),
                       ),
                     )

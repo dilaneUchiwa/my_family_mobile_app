@@ -28,7 +28,7 @@ const Map<String, String> fr = {
   'home.screen.login': 'Connexion',
   'link_family.title': 'Lier avec la famille',
   // Registration
-  'register.title': 'Créer un compte',
+  'register.title': 'Inscription',
   'register.personal_info': 'Informations personnelles',
   'register.username': 'Nom d\'utilisateur',
   'register.email': 'Email',
@@ -41,9 +41,22 @@ const Map<String, String> fr = {
   'register.phone': 'Téléphone',
   'register.address': 'Adresse',
   'register.interests': 'Centres d\'intérêt',
-  'register.submit': 'S\'inscrire',
+  'register.submit': 'Créer un compte',
+  'register.success': 'Compte créé avec succès',
+  'register.error': 'Erreur lors de la création du compte',
+  'register.interests_hint': 'Séparez les centres d\'intérêt par des virgules',
   'register.already_have_account': 'Déjà un compte ?',
   'register.login': 'Se connecter',
+
+  // Interests (examples - add your specific interests)
+  'sports': 'Sports',
+  'music': 'Musique',
+  'reading': 'Lecture',
+  'travel': 'Voyages',
+  'cooking': 'Cuisine',
+  'art': 'Art',
+  'technology': 'Technologie',
+  'photography': 'Photographie',
 
   // Family Tree
   'family_tree.title': 'Arbre Généalogique',
@@ -246,9 +259,9 @@ const Map<String, String> fr = {
 
   // Validation Messages
   'validation.required': 'Ce champ est obligatoire',
-  'validation.invalid_email': 'Veuillez entrer un email valide',
-  'validation.password_length': 'Le mot de passe doit contenir au moins 8 caractères',
-  'validation.passwords_match': 'Les mots de passe doivent correspondre',
+  'validation.invalid_email': 'Adresse email invalide',
+  'validation.password_match': 'Les mots de passe doivent correspondre',
+  'validation.password_length': 'Le mot de passe doit contenir au moins 6 caractères',
   'input.error_enter_title': 'Veuillez entrer un titre',
   'input.error_enter_firstname': 'Veuillez entrer votre prénom',
   'input.error_enter_lastname': 'Veuillez entrer votre nom',
@@ -278,6 +291,9 @@ const Map<String, String> fr = {
   'skip_linking': 'Passer pour le moment',
   'invalid_invitation_code': 'Code d\'invitation invalide',
   'account_linked_successfully': 'Compte lié avec succès',
+  'invitation_code_title': 'Code d\'invitation généré',
+  'invitation_code_description': 'Partagez ce code avec votre membre de famille pour qu\'il puisse rejoindre l\'arbre généalogique :',
+  'code_copied': 'Code copié dans le presse-papier',
 
   // No Internet
   'no_internet.title': 'Pas de connexion Internet',
@@ -306,6 +322,7 @@ const Map<String, String> fr = {
   'registration.success': 'Inscription réussie',
   'registration.error': 'Échec de l\'inscription',
   'registration.pending': 'Inscription en attente',
+  'registration.email_sent': 'Un email de confirmation a été envoyé',
   'registration.verify_email': 'Veuillez vérifier votre email',
 
   // Permissions

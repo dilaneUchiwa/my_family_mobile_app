@@ -13,8 +13,10 @@ class Account {
 
   factory Account.fromJson(Map<String, dynamic> json) {
     return Account(
-      username: json['username'],
-      email: json['email'],
+      // username: json['username'],
+      // email: json['email'],
+      email: "dilane@gmail.com",
+      username: 'dilane',
       // baseNode: BaseNode. fromJson(json['baseNode']),
       baseNode: BaseNode(
         id: 5,

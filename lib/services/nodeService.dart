@@ -119,4 +119,21 @@ class NodeService {
       return null;
     }
   }
+
+  static Future<String?> generateInvitationCode(int nodeId) async {
+    try {
+      final Dio dio = await getDioPrivate();
+      final response = await dio.post(
+        '${URL.nodeBaseUrl}/$nodeId/invitation-code',
+      );
+
+      if (response.statusCode == 200) {
+        return response.data['code'];
+      }
+      return null;
+    } catch (error) {
+      ErrorController.handleError(error);
+      return null;
+    }
+  }
 }

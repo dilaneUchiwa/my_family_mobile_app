@@ -42,9 +42,23 @@ const Map<String, String> en = {
   'register.birth_date': 'Birth date',
   'register.gender': 'Gender',
   'register.interests': 'Interests',
-  'register.submit': 'Register',
+  'register.submit': 'Create Account',
   'register.already_have_account': 'Already have an account?',
   'register.login': 'Log in',
+  'register.title': 'Registration',
+  'register.success': 'Account created successfully',
+  'register.error': 'Error creating account',
+  'register.interests_hint': 'Separate interests with commas',
+
+  // Interests (examples - add your specific interests)
+  'sports': 'Sports',
+  'music': 'Music',
+  'reading': 'Reading',
+  'travel': 'Travel',
+  'cooking': 'Cooking',
+  'art': 'Art',
+  'technology': 'Technology',
+  'photography': 'Photography',
 
   // Family Tree
   'family_tree.title': 'Family Tree',
@@ -255,8 +269,8 @@ const Map<String, String> en = {
 
   // Validation Messages
   'validation.required': 'This field is required',
-  'validation.invalid_email': 'Please enter a valid email',
-  'validation.password_length': 'Password must be at least 8 characters',
+  'validation.invalid_email': 'Invalid email address',
+  'validation.password_length': 'Password must be at least 6 characters',
   'validation.passwords_match': 'Passwords must match',
 
   // Actions
@@ -289,6 +303,9 @@ const Map<String, String> en = {
   'skip_linking': 'Skip for now',
   'invalid_invitation_code': 'Invalid invitation code',
   'account_linked_successfully': 'Account linked successfully',
+  'invitation_code_title': 'Invitation Code Generated',
+  'invitation_code_description': 'Share this code with your family member to let them join the family tree:',
+  'code_copied': 'Code copied to clipboard',
 
   // No Internet
   'no_internet.title': 'No Internet Connection',
@@ -318,6 +335,7 @@ const Map<String, String> en = {
   'registration.error': 'Registration failed',
   'registration.pending': 'Registration pending',
   'registration.verify_email': 'Please verify your email',
+  'registration.email_sent': 'A confirmation email has been sent',
 
   // Permissions
   'permission.camera': 'Camera permission required',
