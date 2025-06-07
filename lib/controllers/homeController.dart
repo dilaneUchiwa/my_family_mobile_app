@@ -142,7 +142,7 @@ class Homecontroller extends GetxController {
         // MODIFICATION: Apparence du nœud d'union (rectangle bleu)
         unionNode.data = Container(
           width: 50,
-          height: 30,
+          height: 10,
           decoration: BoxDecoration(
             color: Colors.blue.shade700,
             borderRadius: BorderRadius.circular(8),

@@ -17,20 +17,34 @@ const Map<String, String> en = {
   'login.remember_me': 'Remember me',
   'login.forgot_password': 'Forgot Password?',
   'login.sign_in': 'Sign In',
-  'login.failed': 'Login failed',
+  'login.title': 'Welcome',
+  'login.register': 'Register',
   'login.no_account': 'Don\'t have an account?',
+  'login.create_account': 'Create account',
+  'logged_in_successfully': 'Logged in successfully',
+  'login_failed': 'Login failed',
+  'login.you_dont_have_account': 'You don\'t have an account?',
+
+
+  'home.screen.login': 'Login',
+  'link_family.title': 'Link with Family',
 
   // Registration
-  'register.title': 'Registration',
+  'register.username': 'Username',
+  'register.email': 'Email',
+  'register.password': 'Password',
+  'register.confirm_password': 'Confirm password',
   'register.personal_info': 'Personal Information',
-  'register.first_name': 'First Name',
-  'register.last_name': 'Last Name',
-  'register.birth_date': 'Birth Date',
-  'register.gender': 'Gender',
-  'register.phone': 'Phone Number',
+  'register.first_name': 'First name',
+  'register.last_name': 'Last name',
+  'register.phone': 'Phone',
   'register.address': 'Address',
+  'register.birth_date': 'Birth date',
+  'register.gender': 'Gender',
   'register.interests': 'Interests',
-  'register.submit': 'Create Account',
+  'register.submit': 'Register',
+  'register.already_have_account': 'Already have an account?',
+  'register.login': 'Log in',
 
   // Family Tree
   'family_tree.title': 'Family Tree',
@@ -77,6 +91,30 @@ const Map<String, String> en = {
   'space.media': 'Media',
   'space.settings': 'Settings',
   'space.no_data': 'No spaces available',
+  'space.create_new': 'Create New Space',
+  'space.add_member': 'Add Member',
+  'space.remove_member': 'Remove Member',
+  'space.confirm_remove': 'Are you sure you want to remove this member?',
+  'space.member_count': '{count} members',
+  'space.loading': 'Loading space...',
+  'space': 'Space',
+  'space_members': 'Space Members',
+  'space_settings': 'Space Settings',
+  'create_space': 'Create Space',
+  'create_event': 'Create Event',
+  'event_title': 'Event Title',
+  'event_description': 'Event Description',
+  'event_start_date': 'Start Date',
+  'event_end_date': 'End Date',
+  'event_details': 'Event Details',
+  'event_participants': 'Participants',
+  'no_spaces_yet': 'No spaces yet',
+  'no_events_yet': 'No events yet',
+  'upload_media': 'Upload Media',
+  'select_files': 'Select Files',
+  'add_participants': 'Add Participants',
+  'events': 'Events',
+  'discussions': 'Discussions',
 
   // Messages
   'message.type': 'Type a message...',
@@ -131,4 +169,159 @@ const Map<String, String> en = {
   // Main Page
   'main.session_expired': 'Your session has expired',
   'main.back_press': 'Press back again to exit',
+
+  // Relation Management
+  'add_relation': 'Add Relation',
+  'relation_type': 'Relation Type',
+  'create': 'Create',
+  'separate_by_comma': 'Separate interests with commas',
+  'relation_created': 'Relation created successfully',
+  'error_creating_relation': 'Error creating relation',
+
+  // Form Validations
+  'form.required': 'This field is required',
+  'form.invalid_email': 'Please enter a valid email',
+  'form.select_date': 'Please select a date',
+  'form.select_start_date': 'Please select start date first',
+
+  // Event Creation/Edition
+  'event.create_success': 'Event created successfully',
+  'event.start_date': 'Start date',
+  'event.end_date': 'End date',
+
+  // Media
+  'media.upload_not_implemented': 'Media upload not implemented yet',
+  'media.no_media': 'No media available',
+  'media.gallery': 'Media Gallery',
+
+  // Tooltips
+  'tooltip.refresh_tree': 'Refresh family tree',
+  'tooltip.center_view': 'Center view',
+  'tooltip.add_relation': 'Add new relation',
+  'tooltip.upload_media': 'Upload media',
+
+  // Admin
+  'admin.make_admin': 'Make admin',
+  'admin.remove_admin': 'Remove admin rights',
+  'admin.confirm_action': 'Are you sure?',
+
+  // Discussion
+  'discussion.new': 'New Discussion',
+  'discussion.select_type': 'Select discussion type',
+  'discussion.private': 'Private Discussion',
+  'discussion.group': 'Group Discussion',
+  'discussion.members': 'Discussion Members',
+  'discussion.no_messages': 'No messages yet',
+  'discussion.type_message': 'Type your message...',
+
+  // Additional translations needed from screens review
+  'profile.edit': 'Edit Profile',
+  'profile.save': 'Save Changes',
+  'drawer.last_login': 'Last login: {}',
+  'button.yes': 'Yes',
+  'button.no': 'No',
+  'button.close': 'Close',
+  'button.save': 'Save',
+  'button.delete': 'Delete',
+  'button.cancel': 'Cancel',
+  'button.confirm': 'Confirm',
+  'button.back': 'Back',
+
+  // Custom Drawer Menu
+  'menu.profile': 'Profile',
+  'menu.link_family': 'Link with Family',
+  'menu.spaces': 'Spaces',
+  'menu.discussions': 'Discussions',
+  'menu.events': 'Events',
+  'menu.settings': 'Settings',
+  'menu.logout': 'Logout',
+
+  // Gender
+  'gender.male': 'Male',
+  'gender.female': 'Female',
+  'gender.other': 'Other',
+
+  // Form Fields
+  'field.title': 'Title',
+  'field.first_name': 'First Name',
+  'field.last_name': 'Last Name',
+  'field.email': 'Email',
+  'field.phone': 'Phone Number',
+  'field.address': 'Address',
+  'field.birth_date': 'Birth Date',
+  'field.interests': 'Interests',
+  'field.password': 'Password',
+  'field.confirm_password': 'Confirm Password',
+
+  // Validation Messages
+  'validation.required': 'This field is required',
+  'validation.invalid_email': 'Please enter a valid email',
+  'validation.password_length': 'Password must be at least 8 characters',
+  'validation.passwords_match': 'Passwords must match',
+
+  // Actions
+  'action.save': 'Save',
+  'action.cancel': 'Cancel',
+  'action.edit': 'Edit',
+  'action.delete': 'Delete',
+  'action.confirm': 'Confirm',
+  'action.close': 'Close',
+
+  // Input Errors
+  'input.error_enter_title': 'Please enter a title',
+  'input.error_enter_firstname': 'Please enter your first name',
+  'input.error_enter_lastname': 'Please enter your last name',
+  'input.error_enter_username': 'Please enter your username',
+  'input.error_enter_email': 'Please enter your email',
+  'input.error_invalid_email': 'Please enter a valid email',
+  'input.error_enter_password': 'Please enter your password',
+  'input.error_password_length': 'Password must be at least 6 characters',
+  'input.error_confirm_password': 'Please confirm your password',
+  'input.error_passwords_dont_match': 'Passwords do not match',
+  'input.home.back.text': 'Press back again to exit',
+  'input.home.screen.last_login': 'Last login',
+
+  // Link to Family
+  'link_account': 'Link Account',
+  'link_account_title': 'Link to Family',
+  'link_account_description': 'Enter the invitation code provided by your family member',
+  'link_account_button': 'Link Account',
+  'skip_linking': 'Skip for now',
+  'invalid_invitation_code': 'Invalid invitation code',
+  'account_linked_successfully': 'Account linked successfully',
+
+  // No Internet
+  'no_internet.title': 'No Internet Connection',
+  'no_internet.desc': 'Please check your internet connection and try again',
+  'no_internet.button.check': 'Check Connection',
+
+  // Search & Filters 
+  'search.placeholder': 'Search members...',
+  'filter.all': 'All',
+  'filter.online': 'Online',
+  'filter.offline': 'Offline',
+
+  // Empty States
+  'empty.members': 'No members found',
+  'empty.search': 'No results found',
+  'empty.notifications': 'No notifications',
+
+  // Password Reset
+  'password.reset': 'Reset Password',
+  'password.current': 'Current Password',
+  'password.new': 'New Password',
+  'password.confirm': 'Confirm Password',
+  'password.changed': 'Password changed successfully',
+
+  // Registration Messages
+  'registration.success': 'Registration successful',
+  'registration.error': 'Registration failed',
+  'registration.pending': 'Registration pending',
+  'registration.verify_email': 'Please verify your email',
+
+  // Permissions
+  'permission.camera': 'Camera permission required',
+  'permission.location': 'Location permission required',
+  'permission.storage': 'Storage permission required',
+  'permission.grant': 'Grant Permission',
 };

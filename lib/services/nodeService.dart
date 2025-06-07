@@ -44,6 +44,7 @@ class NodeService {
 
   static Future<BaseNode?> createNode(Map<String, dynamic> nodeData) async {
     try {
+
       final Dio dio = await getDioPrivate();
       final response = await dio.post(
         URL.createNodeUrl,
