@@ -65,6 +65,7 @@ class LoginController extends GetxController {
           type: ToastType.error
         ).showToast();
       } else {
+        await GetStorage().write('account', account.toJson());
         Get.find<Homecontroller>().account.value = account;
         await GetStorage().write(StorageConstants.loggedIn, true);
 

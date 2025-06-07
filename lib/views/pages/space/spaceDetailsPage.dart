@@ -86,19 +86,19 @@ class SpaceActionsList extends StatelessWidget {
       children: [
         ListTile(
           leading: Icon(Icons.chat),
-          title: Text('discussions'.tr),
+          title: Text('space.discussions'.tr),
           trailing: Icon(Icons.arrow_forward_ios),
           onTap: () => Get.toNamed(AppRoutes.spaceDiscussions),
         ),
         ListTile(
           leading: Icon(Icons.event),
-          title: Text('events'.tr),
+          title: Text('space.events'.tr),
           trailing: Icon(Icons.arrow_forward_ios),
           onTap: () => Get.toNamed(AppRoutes.spaceEvents),
         ),
         ListTile(
           leading: Icon(Icons.photo_library),
-          title: Text('media'.tr),
+          title: Text('space.media'.tr),
           trailing: Icon(Icons.arrow_forward_ios),
           onTap: () => Get.toNamed(AppRoutes.spaceMedia),
         ),

@@ -25,7 +25,7 @@ class BottomNavigationBarComponent extends StatelessWidget {
                 children: [
                   _BottomItem(
                     icon: AppImages.home,
-                    title: 'bottom_nav.home'.tr,
+                    title: 'nav.home'.tr,
                     currentIndex: homeController.selectedNavIndex.value,
                     index: 0,
                     onTap: (index) {
@@ -36,7 +36,7 @@ class BottomNavigationBarComponent extends StatelessWidget {
                   ),
                   _BottomItem(
                     icon: AppImages.home,
-                    title: 'bottom_nav.space'.tr,
+                    title: 'nav.space'.tr,
                     currentIndex: homeController.selectedNavIndex.value,
                     index: 1,
                     onTap: (index) {

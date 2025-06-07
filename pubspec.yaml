@@ -47,6 +47,8 @@ dependencies:
   flutter_svg: ^2.1.0
   connectivity_plus: ^6.1.4
   timeago: ^3.7.1
+  graphview: ^1.2.0
+  popover: ^0.2.8+2
 
 dev_dependencies:
   flutter_test:
