@@ -27,7 +27,7 @@ class BaseNode {
 
   factory BaseNode.fromJson(Map<String, dynamic> json) {
     return BaseNode(
-      id: json['id'],
+      id: json['id'] ?? 0,
       title: json['title'],
       firstName: json['firstName'],
       lastName: json['lastName'],
@@ -36,8 +36,8 @@ class BaseNode {
       address: json['address'],
       phone: json['phone'],
       interests: List<String>.from(json['interests']),
-      userId: json['userId'],
-      baseNode: json['baseNode'],
+      userId: json['userId'] ?? 0 ,
+      baseNode: json['baseNode'] ?? false,
     );
   }
 

@@ -11,6 +11,7 @@ import 'package:my_family_mobile_app/domain/models/mock.dart';
 import 'package:my_family_mobile_app/domain/models/node.dart';
 import 'package:my_family_mobile_app/domain/models/node_relation.dart';
 import 'package:my_family_mobile_app/routes/appRoutes.dart';
+import 'package:my_family_mobile_app/services/nodeService.dart';
 import 'package:my_family_mobile_app/services/utils/AuthManager.dart';
 import 'package:my_family_mobile_app/utils/storageConstant.dart';
 import 'package:graphview/GraphView.dart' as gv;
@@ -46,6 +47,7 @@ class Homecontroller extends GetxController {
 
   final gv.Graph graph = gv.Graph();
   late gv.SugiyamaAlgorithm algorithm;
+  // final relations = [].obs;
   final relations = familyTreeRelations.obs;
   final Map<int, gv.Node> nodeMap = {};
   final transformationController = TransformationController();
@@ -59,9 +61,11 @@ class Homecontroller extends GetxController {
     ever(account, (_) => buildFamilyGraph());
   }
 
-  void _initializeAccount() {
+  Future<void> _initializeAccount() async {
     final storage = GetStorage();
     final accountData = storage.read('account');
+    // final relationTemp = await NodeService.getFamilyRelations();
+    // relations.value = relationTemp;
     if (accountData != null) {
       account.value = Account.fromJson(accountData);
       buildFamilyGraph();
@@ -308,6 +312,12 @@ class Homecontroller extends GetxController {
   Future<void> onRefresh() async {
     await resetState();
     await _checkInitialConnectivity();
+
+    _initConnectivityChecks();
+    _initializeAccount();
+    ever(account, (_) => buildFamilyGraph());
+    
+  update();
   }
 
   @override

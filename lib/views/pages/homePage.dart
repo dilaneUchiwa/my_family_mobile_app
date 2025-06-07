@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
-            onPressed: () => homeController.refreshFamilyTree(),
+            onPressed: () => homeController.onRefresh(),
             tooltip: 'Actualiser l\'arbre',
           ),
           IconButton(
@@ -93,7 +93,7 @@ class HomePage extends StatelessWidget {
           // Zone principale de l'arbre
           Expanded(
             child: RefreshIndicator(
-              onRefresh: () async => homeController.refreshFamilyTree(),
+              onRefresh: () async => homeController.onRefresh(),
               child: GetBuilder<Homecontroller>(
                 builder: (controller) {
                   if (controller.relations.isEmpty) {

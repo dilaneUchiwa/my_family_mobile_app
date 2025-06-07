@@ -15,7 +15,7 @@ import 'package:my_family_mobile_app/services/utils/dioPrivate.dart';
 
 class AuthService {
   static Future<Account?> login(dynamic authObject) async {
-    return Account.fromJson(authObject);
+    // return Account.fromJson(authObject);
 
     try {
       final Dio dio = await getDioPrivate();

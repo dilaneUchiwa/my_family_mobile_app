@@ -289,6 +289,11 @@ class _AddRelationDialogState extends State<AddRelationDialog> {
   }
 
   Future<void> _createRelation() async {
+
+    await _showInvitationCodeDialog(1);
+
+    return;
+
     if (!_formKey.currentState!.validate()) return;
 
     final nodeData = {
@@ -328,7 +333,8 @@ class _AddRelationDialogState extends State<AddRelationDialog> {
 
   Future<void> _showInvitationCodeDialog(int nodeId) async {
     try {
-      final invitationCode = await NodeService.generateInvitationCode(nodeId);
+      // final invitationCode = await NodeService.generateInvitationCode(nodeId);
+      final invitationCode = "946845";
       if (invitationCode != null) {
         await Get.dialog(
           AlertDialog(
