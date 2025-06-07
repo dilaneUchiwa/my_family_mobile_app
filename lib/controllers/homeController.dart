@@ -258,10 +258,10 @@ class Homecontroller extends GetxController {
     try {
       final connectivityResult = await connectivity.checkConnectivity();
       final hasNetworkConnection = connectivityResult != ConnectivityResult.none;
-      hasConnection.value = hasNetworkConnection;
-      isOnline.value = hasNetworkConnection ? await _pingGoogle() : false;
+      // hasConnection.value = hasNetworkConnection;
+      // isOnline.value = hasNetworkConnection ? await _pingGoogle() : false;
     } catch (_) {
-      isOnline.value = false;
+      // isOnline.value = false;
     }
   }
 
@@ -275,12 +275,12 @@ class Homecontroller extends GetxController {
   }
 
   void _handleConnectivityChange(ConnectivityResult result) {
-    previousConnection(hasConnection.value);
-    _checkConnectivityAndPing();
-    if (!previousConnection.value && hasConnection.value) {
-      selectedNavIndex.value = 0;
-      _refreshHomePage();
-    }
+    // previousConnection(hasConnection.value);
+    // _checkConnectivityAndPing();
+    // if (!previousConnection.value && hasConnection.value) {
+    //   selectedNavIndex.value = 0;
+    //   _refreshHomePage();
+    // }
   }
 
   Future<void> _checkInitialConnectivity() async {
@@ -324,10 +324,10 @@ class Homecontroller extends GetxController {
   Future<void> resetState() async {
     selectedNavIndex.value = 0;
     isChanged = false;
-    hasConnection.value = true;
+    // hasConnection.value = true;
     previousConnection.value = false;
     currentBackPressTime.value = null;
-    isOnline.value = true;
+    // isOnline.value = true;
   }
 
   @override
